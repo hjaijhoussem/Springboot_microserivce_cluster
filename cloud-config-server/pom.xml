@@ -75,7 +75,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>dailycodebuffer/cloud-config-server</repository>
+					<repository>hjaiejhoussem/cloud-config-server</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>

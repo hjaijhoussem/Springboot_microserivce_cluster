@@ -103,7 +103,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>dailycodebuffer/department-service</repository>
+					<repository>hjaiejhoussem/department-service</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>
