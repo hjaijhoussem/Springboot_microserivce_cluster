@@ -105,7 +105,6 @@
 				<configuration>
 					<repository>hjaiejhoussem/department-service</repository>
 					<tag>${project.version}</tag>
-					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 				</configuration>
 				<dependencies>
 					<!-- To make this work on JDK 9+ -->
