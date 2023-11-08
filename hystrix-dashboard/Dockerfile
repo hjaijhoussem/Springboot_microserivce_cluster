@@ -1,5 +1,9 @@
-FROM openjdk:11
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} hystrix-dashboard.jar
-ENTRYPOINT ["java","-jar","/hystrix-dashboard.jar"]
+FROM maven:3.9-eclipse-temurin-11-alpine AS build
+COPY . ./opt/app
+WORKDIR /opt/app
+RUN mvn clean package
+
+FROM eclipse-temurin:11-jre-alpine
+COPY --from=build /opt/app/target/*.jar /opt/app/hystrix-dashboard.jar
+ENTRYPOINT ["java","-jar","/opt/app/hystrix-dashboard.jar"]
 EXPOSE 9295

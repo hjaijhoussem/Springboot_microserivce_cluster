@@ -1,10 +1,9 @@
-FROM openjdk:11
-RUN apt-get update && apt-get install -y maven
-COPY . /opt/app
+FROM maven:3.9-eclipse-temurin-11-alpine AS build
+COPY . ./opt/app
 WORKDIR /opt/app
 RUN mvn clean package
-ARG JAR_FILE=target/*.jar
-RUN cp ${JAR_FILE} user-service.jar
-# COPY ${JAR_FILE} user-service.jar
-ENTRYPOINT ["java","-jar","/user-service.jar"]
+
+FROM eclipse-temurin:11-jre-alpine
+COPY --from=build /opt/app/target/*.jar /opt/app/user-service.jar
+ENTRYPOINT ["java","-jar","/opt/app/user-service.jar"]
 EXPOSE 9002
